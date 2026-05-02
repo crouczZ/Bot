@@ -16,11 +16,6 @@ const {
 } = require('discord.js');
 
 // 🔑 TOKEN BURADA GİZLƏDİLİR (Render "Environment Variables" bölməsindən oxuyacaq)
-// --- GİZLİ XƏTALARI VƏ DİSCORD-UN MESAJLARINI GÖRMƏK ÜÇÜN ---
-client.on('debug', m => console.log('🔍 DİSCORD SİSTEMİ:', m));
-process.on('unhandledRejection', err => console.error('❌ GİZLİ XƏTA:', err));
-
-client.login(TOKEN);
 
 const TOKEN = process.env.TOKEN;
 
@@ -235,5 +230,13 @@ client.on('interactionCreate', async interaction => {
 
   } catch (err) { console.error(err); interaction.reply({ content: 'Xəta oldu!', ephemeral: true }).catch(()=>{}); }
 });
+// ... (yuxarıdakı bütün kodların, slash komandaların filan hamısı olduğu kimi qalır)
+
+  } catch (err) { console.error(err); interaction.reply({ content: 'Xəta oldu!', ephemeral: true }).catch(()=>{}); }
+});
+
+// --- GİZLİ XƏTALARI GÖRMƏK ÜÇÜN KODU BURA QOYURUQ ---
+client.on('debug', m => console.log('🔍 DİSCORD SİSTEMİ:', m));
+process.on('unhandledRejection', err => console.error('❌ GİZLİ XƏTA:', err));
 
 client.login(TOKEN);
