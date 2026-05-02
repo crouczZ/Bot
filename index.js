@@ -16,6 +16,12 @@ const {
 } = require('discord.js');
 
 // 🔑 TOKEN BURADA GİZLƏDİLİR (Render "Environment Variables" bölməsindən oxuyacaq)
+// --- GİZLİ XƏTALARI VƏ DİSCORD-UN MESAJLARINI GÖRMƏK ÜÇÜN ---
+client.on('debug', m => console.log('🔍 DİSCORD SİSTEMİ:', m));
+process.on('unhandledRejection', err => console.error('❌ GİZLİ XƏTA:', err));
+
+client.login(TOKEN);
+
 const TOKEN = process.env.TOKEN;
 
 // 📂 LOG KANALLARININ ID-LƏRİ
